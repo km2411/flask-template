@@ -11,7 +11,7 @@ math = Blueprint('math', __name__)
 # Set the route and accepted methods
 @math.route('/')
 def index():
-    return "This is an example app"
+    return "This is an my first web app"
 
 
 @math.route('/home')
@@ -31,6 +31,10 @@ def fib_n():
 def ack_mn():
     return ""
 
-
+@math.route("/fact",methods=["POST"])
 def fact_n():
-    return ""
+    n = request.form["fact_n"]
+    if not validations.validate_int(n):
+        return "enter valid number"
+    return str(Compute.factorial(int(n)))
+    
