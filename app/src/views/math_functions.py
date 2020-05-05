@@ -33,4 +33,4 @@ def ack_mn():
 
 
 def fact_n():
-    return ""
+    return "factorial to be implemented"
