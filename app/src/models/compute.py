@@ -22,5 +22,25 @@ class Compute:
         return
 
 
+    @staticmethod
     def factorial(n):
-        return
+        if n==1:
+            return n
+        else:
+            res=1
+            for i in range(1,n+1):
+                res=res*i
+            return res    
+        if n< 0:
+
+            print("Sorry, factorial does not exist for negative numbers")
+        if n == 0:
+
+            print("The factorial of 0 is 1")
+        
+
+    
+    
+    
+
+        
