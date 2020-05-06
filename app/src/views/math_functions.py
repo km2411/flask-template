@@ -33,9 +33,13 @@ def ack_mn():
 
 @math.route("/fact", methods=["POST"])
 def fact_n():
+<<<<<<< HEAD
     n = request.form["fact_n"]
     if not validations.validate_int(n):
         # in case of invalid input, return HTTP response code for Bad Request
         return "Please enter a valid input!", 400
     return str(Compute.factorial(int(n)))
 
+=======
+    return "factorial to be implemented"
+>>>>>>> 88b271299d508a21436be85ea7723853ed69a1c0
