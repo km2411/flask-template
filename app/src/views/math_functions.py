@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, g, render_template, request
+from flask import Blueprint, Response, g, render_template, request, jsonify
 
 from app.src.helpers import validations
 from app.src.models.compute import Compute
@@ -25,7 +25,9 @@ def fib_n():
     if not validations.validate_int(n):
         # in case of invalid input, return HTTP response code for Bad Request
         return "Please enter a valid input!", 400
-    return str(Compute.fibonacci(int(n)))
+    response = {}
+    response[str(n)] = str(Compute.fibonacci(int(n)))
+    return jsonify(response)
 
 
 def ack_mn():
