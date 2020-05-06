@@ -31,6 +31,11 @@ def fib_n():
 def ack_mn():
     return ""
 
-
+@math.route("/fact", methods=["POST"])
 def fact_n():
-    return ""
+    n = request.form["fact_n"]
+    if not validations.validate_int(n):
+        # in case of invalid input, return HTTP response code for Bad Request
+        return "Please enter a valid input!", 400
+    return str(Compute.factorial(int(n)))
+

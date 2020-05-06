@@ -21,6 +21,12 @@ class Compute:
     def ackermann(m, n):
         return
 
-
+    @staticmethod
     def factorial(n):
-        return
+        fact=1
+        if n==0:
+            return 0
+        else:
+            for i in range(1,n+1):
+                fact=fact*i
+            return fact   
