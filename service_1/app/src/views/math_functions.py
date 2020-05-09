@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 import requests
+import json
 
 from app.src.helpers import validations, config
 
@@ -27,8 +28,9 @@ def fib_n():
     
     # call service 2
     fib_url = precompute_service_url + '/fib' 
-    response = requests.post(url=fib_url, json={'fib_n':str(n)})
-    return jsonify(response.text)
+    param = {'fib_n': str(n)}
+    response = requests.post(url=fib_url, params=param)
+    return json.loads(response.text)
 
 
 def ack_mn():
