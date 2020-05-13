@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Initialzie Database
 from app.src.helpers.database import mongo
-from app.src.helpers.config import DBURI
+from app.src.helpers.config import DBURI, FIBLIMIT
 mongo.init_app(app, uri=DBURI) 
 
 # Import a module / component using its blueprint handler variable
@@ -14,3 +14,8 @@ from app.src.resource.precomputed import fetch_result
 
 # Register blueprint(s)
 app.register_blueprint(fetch_result)
+
+# creating a startup function
+from app.src.models.warmup import Warmup
+with app.app_context():
+    Warmup(FIBLIMIT)
