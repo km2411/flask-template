@@ -2,7 +2,7 @@ sudo : required
 services:
   - docker
 
-language: generic
+language: minimal
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
@@ -14,4 +14,4 @@ deploy:
     branch: deployment
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: $AWS_SECRET_KEY
