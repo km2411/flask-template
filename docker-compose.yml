@@ -1,0 +1,47 @@
+version: "3"
+
+networks:           
+  net1:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.10.10.0/28
+
+services:
+  service-1:
+    build: ./service_1
+    image: service-1
+    container_name: service-1
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    networks: 
+      net1:
+        ipv4_address: 10.10.10.2
+   
+  service-2:
+    build: ./service_2
+    image: service-2
+    container_name: service-2
+    depends_on: 
+      - mongo
+    expose:
+      - 9090
+    ports:
+      - 9090:9090
+    networks: 
+      net1:
+        ipv4_address: 10.10.10.3
+        
+  mongo:
+    build: ./mongo
+    image: mongo
+    container_name: mongo
+    expose: 
+      - 27017
+    ports: 
+      - 27017:27017
+    networks:
+      net1:
+        ipv4_address: 10.10.10.4
