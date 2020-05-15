@@ -2,6 +2,7 @@ sudo : required
 services:
   - docker
 
+language: generic
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
