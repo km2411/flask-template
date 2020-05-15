@@ -1,0 +1,16 @@
+sudo : required
+services:
+  - docker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: flask-app
+  env: FlaskApp-env
+  bucket-name: elasticbeanstalk-us-east-2-126562325494
+  bucket-path: flask-app
+  on:
+    branch: deployment
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"

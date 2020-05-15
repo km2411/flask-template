@@ -8,7 +8,7 @@ class Warmup:
     @staticmethod
     def refresh_fib(fib_limit):
         for n in range(fib_limit+1):
-            mongo.db.fibonacci.insert({'n' : n, 'value' : Compute.fibonacci(n)})
+            mongo.db.fibonacci.insert_one({'n' : n, 'value' : Compute.fibonacci(n)})
 
 
 
