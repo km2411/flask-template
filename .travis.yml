@@ -7,7 +7,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app: flask-app
-  env: FlaskApp-env
+  env: FlaskApp-env-1
   bucket-name: elasticbeanstalk-us-east-2-126562325494
   bucket-path: flask-app
   on:
