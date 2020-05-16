@@ -1,0 +1,68 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "mongo",
+        "image": "km2411/flask-mongo-aws:latest",
+        "essential": true,
+        "memory": 200,
+        "cpu": 1,
+        "portMappings": [
+            {
+              "hostPort": 27017,
+              "containerPort": 27017
+            }
+          ]
+      },
+      {
+        "name": "service-1",
+        "image": "km2411/flask-service1-aws:latest",
+        "essential": true,
+        "memory": 200,
+        "cpu": 1,
+        "portMappings": [
+          {
+            "hostPort": 8080,
+            "containerPort": 8080
+          }
+        ],
+        "links": [
+              "service-2"
+        ]
+      },
+      {
+        "name": "service-2",
+        "image": "km2411/flask-service2-aws:latest",
+        "essential": true,
+        "memory": 200,
+        "cpu": 1,
+        "portMappings": [
+          {
+            "hostPort": 9090,
+            "containerPort": 9090
+          }
+        ],
+        "links": [
+              "mongo"
+        ]
+        },
+        {
+            "name": "nginx",
+            "image": "km2411/flask-nginx-aws:latest",
+            "environment": [],
+            "essential": true,
+            "memory": 200,
+            "mountPoints": [],
+            "portMappings": [
+              {
+                "hostPort": 80,
+                "containerPort": 80,
+                "protocol": "tcp"
+              }
+            ],
+            "links": [
+              "service-1"
+            ]
+        }
+    ]
+  }
