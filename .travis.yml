@@ -29,10 +29,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
-  app: flask-app
-  env: FlaskApp-env-1
+  app: Flask-App
+  env: FlaskApp-env
   bucket-name: elasticbeanstalk-us-east-2-126562325494
-  bucket-path: flask-app
+  bucket-path: Flask-App
   on:
     branch: aws_deployment
   access_key_id: $AWS_ACCESS_KEY
