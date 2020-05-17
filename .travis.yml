@@ -18,6 +18,12 @@ after_success:
       docker tag service-2 $DOCKER_USERNAME/flask-service2-aws ;
       docker tag mongo $DOCKER_USERNAME/flask-mongo-aws ;
       docker tag nginx $DOCKER_USERNAME/flask-nginx-aws ;
+
+      docker push $DOCKER_USERNAME/flask-service1-aws
+      docker push $DOCKER_USERNAME/flask-service2-aws ;
+      docker push $DOCKER_USERNAME/flask-mongo-aws ;
+      docker push $DOCKER_USERNAME/flask-nginx-aws ;
+
     fi
 
 deploy:
