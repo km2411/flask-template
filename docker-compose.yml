@@ -25,3 +25,12 @@ services:
       - 27017
     ports: 
       - 27017:27017
+  
+  nginx:
+    build: ./nginx
+    image: nginx
+    container_name: nginx
+    expose:
+      - 80
+    ports: 
+      - 80:80
