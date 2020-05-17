@@ -14,10 +14,10 @@ after_success:
   - if [[ "$TRAVIS_BRANCH" == "aws_deployment" ]]; then
       docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
       docker-compose build ;
-      docker tag service-1 $DOCKER_USERNAME/flask-service1-aws
-      docker tag service-2 $DOCKER_USERNAME/flask-service2-aws
-      docker tag mongo $DOCKER_USERNAME/flask-mongo-aws
-      docker tag nginx $DOCKER_USERNAME/flask-nginx-aws
+      docker tag service-1 $DOCKER_USERNAME/flask-service1-aws ;
+      docker tag service-2 $DOCKER_USERNAME/flask-service2-aws ;
+      docker tag mongo $DOCKER_USERNAME/flask-mongo-aws ;
+      docker tag nginx $DOCKER_USERNAME/flask-nginx-aws ;
     fi
 
 deploy:
