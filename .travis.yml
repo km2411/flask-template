@@ -6,4 +6,5 @@ services:
 before_script: pip install docker-compose
 
 script:
+  - docker-compose build service-2
   - docker-compose run service-2 sh -c "pytest"
