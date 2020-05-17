@@ -9,13 +9,19 @@ services:
       - 8080
     ports:
       - 8080:8080
-   
+    environment: 
+      - SERVICE2=service-2
+      - SERVICE2_PORT=9090
+
   service-2:
     build: ./service_2
     image: service-2
     container_name: service-2
     depends_on: 
       - mongo
+    environment: 
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
 
   mongo:
     build: ./mongo
