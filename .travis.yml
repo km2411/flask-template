@@ -1,4 +1,9 @@
+sudo : required
 language: python
+services:
+  - docker
+
+before_script: pip install docker-compose
 
 script:
-  - pytest
+  - docker-compose run service-2 sh -c "pytest"
