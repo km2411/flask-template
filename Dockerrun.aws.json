@@ -40,12 +40,6 @@
       "essential": true,
       "memory": 200,
       "cpu": 1,
-      "portMappings": [
-        {
-          "hostPort": 9090,
-          "containerPort": 9090
-        }
-      ],
       "links": [
             "mongo"
       ],
