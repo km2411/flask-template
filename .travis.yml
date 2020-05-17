@@ -1,8 +1,25 @@
-sudo : required
+language: python
+
 services:
   - docker
 
-language: generic
+before_script: pip install docker-compose
+
+script:
+  # since there's a dependency on mongo, it will build that image also
+  # although we have not added any tests scenario
+  - docker-compose run service-2 sh -c "pytest"
+
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "aws_deployment" ]]; then
+      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ;
+      docker-compose build ;
+      docker tag service-1 $DOCKER_USERNAME/flask-service1-aws
+      docker tag service-2 $DOCKER_USERNAME/flask-service2-aws
+      docker tag mongo $DOCKER_USERNAME/flask-mongo-aws
+      docker tag nginx $DOCKER_USERNAME/flask-nginx-aws
+    fi
+
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
